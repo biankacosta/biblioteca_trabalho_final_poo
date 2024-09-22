@@ -1,10 +1,11 @@
 package Entities;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends BaseModel {
+	
 	private String title;
 	private List<String> author;
 	private BookStatus status;
@@ -12,21 +13,21 @@ public class Book extends BaseModel {
 	private String publisher;
 	private LocalDate publishDate;
 	
-	private Book(String title, List<String> author, BookStatus status, String isbn, String publisher, LocalDate publishDate) {
+	public Book(String title, List<String> author, BookStatus status, String isbn, String publisher,
+			LocalDate publishDate, Integer quantity) {
 		super();
-        this.title = title;
-        this.author = author;
-        this.status = status;
-        this.isbn = isbn;
-        this.publisher = publisher;
-        this.publishDate = publishDate;
-    }
-	
-	public static Book criarLivro(String title, List<String> author, BookStatus status, String isbn, String publisher, LocalDate publishDate) {
-        return new Book(title, author, status, isbn, publisher, publishDate);
-    }
+		this.title = title;
+		this.author = author;
+		this.status = status;
+		this.isbn = isbn;
+		this.publisher = publisher;
+		this.publishDate = publishDate;
+		this.quantity = quantity;
+	}
 
-    public String getTitle() {
+	private Integer quantity;
+
+	public String getTitle() {
         return title;
     }
 
@@ -49,6 +50,10 @@ public class Book extends BaseModel {
     public LocalDate getPublishDate() {
         return publishDate;
     }
+    
+	public Integer getQuantity() {
+		return quantity;
+	}
 	
 	@Override
 	public String toString() {
@@ -59,6 +64,5 @@ public class Book extends BaseModel {
                 "Editora: " + publisher + '\n' +
                 "Data de publicação: " + publishDate;
 	}
-	
 
 }
